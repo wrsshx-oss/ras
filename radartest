@@ -5678,8 +5678,8 @@
                         (this.IOOll.mode.radar_zoom > 2 || this.IOOll.mode.high_def_radar) && (this.canvas.width = 1024,
                         this.canvas.height = 1024),
                         this.canvas2 = document.createElement("canvas"),
-                        this.canvas2.width = 512,
-                        this.canvas2.height = 512,
+                        this.canvas2.width = this.canvas.width,
+                        this.canvas2.height = this.canvas.height,
                         this.Oll0O = new THREE.Group,
                         this.texture = new THREE.Texture(this.canvas),
                         this.texture.minFilter = THREE.LinearFilter,
@@ -5830,13 +5830,13 @@
                     }
                     ,
                     t.prototype.updateNames = function(t) {
-                        var e, i, s, l, n, a, o, r, h, u, d, O, c, p, I, m, f, g, y;
+                        var e, i, s, l, n, a, o, r, h, u, d, O, c, p, I, m, f, g, y, v, b, w, x, k, E, _;
                         if (null != t && "function" == typeof t.getUint8 && null != this.data && null != this.IOOll && null != this.IOOll.lI1OO && null != this.IOOll.lI1OO.OIIIO && null != this.IOOll.names) {
                             for (this.update2(this.data, this.hue),
                             i = this.canvas2.getContext("2d"),
                             i.save(),
                             i.translate(this.canvas2.width / 2, this.canvas2.height / 2),
-                            i.scale(2 / this.canvas.width, 2 / this.canvas.height),
+                            i.scale(2 / this.canvas2.width, 2 / this.canvas2.height),
                             i.fillStyle = "hsla(" + this.hue + ",90%,90%,1)",
                             o = Math.max(16, Math.min(28, Math.round(this.canvas.width / 22))),
                             i.font = o + "pt Bungee",
@@ -5868,7 +5868,30 @@
                                 c *= p,
                                 O = Math.max(-.95, Math.min(.95, O)),
                                 c = Math.max(-.95, Math.min(.95, c)),
-                                i.fillText(y.substring(0, 12), O * (this.canvas.width / 2), -c * (this.canvas.height / 2) - o)));
+                                i.fillText(y.substring(0, 12), O * (this.canvas2.width / 2), -c * (this.canvas2.height / 2) - o),
+                                this.IOOll.lI1OO.OOOl1.survival && (v = this.IOOll.lI1OO.OOOl1.IO111[I],
+                                w = "",
+                                E = -1,
+                                null != v && null != v.IOOOI && null != v.IOOOI.type && null != v.IOOOI.instance && null != v.IOOOI.status && (b = v.IOOOI.type.level,
+                                null != b && (w = "T" + b),
+                                x = v.IOOOI.status.shield,
+                                k = v.IOOOI.instance.shield_capacity,
+                                null != k && k > 0 && (E = Math.max(0, Math.min(1, x / k)))),
+                                w.length > 0 && (i.font = Math.round(.7 * o) + "pt Play",
+                                i.fillStyle = "hsla(" + this.hue + ",70%,80%,.95)",
+                                i.fillText(w, O * (this.canvas2.width / 2), -c * (this.canvas2.height / 2) - Math.round(.2 * o))),
+                                E >= 0 && (i.shadowBlur = 0,
+                                _ = Math.max(18, Math.round(2.4 * o)),
+                                s = Math.max(2, Math.round(.18 * o)),
+                                e = O * (this.canvas2.width / 2) - _ / 2,
+                                l = -c * (this.canvas2.height / 2) - Math.round(.9 * o),
+                                i.fillStyle = "rgba(0,0,0,.6)",
+                                i.fillRect(e - 1, l - 1, _ + 2, s + 2),
+                                i.fillStyle = "hsl(" + Math.round(120 * E) + ",100%,60%)",
+                                i.fillRect(e, l, Math.round(_ * E), s),
+                                i.shadowBlur = 6),
+                                i.font = o + "pt Bungee",
+                                i.fillStyle = "hsla(" + this.hue + ",90%,90%,1)"))));
                             i.shadowBlur = 0,
                             i.restore(),
                             this.texture2.needsUpdate = !0
