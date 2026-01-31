@@ -5825,19 +5825,54 @@
                         i.fillStyle = this.color,
                         i.fillRect(-1, -1, .03, 2),
                         i.fillRect(.97, -1, .03, 2),
-                        i.save(),
-                        i.scale(2 / this.canvas.width, 2 / this.canvas.height),
-                        i.fillStyle = "hsla(" + e + ",90%,90%,1)",
-                        i.font = "12pt Bungee",
-                        i.textAlign = "center",
-                        i.textBaseline = "top",
-                        null != this.IOOll && this.IOOll.player_name && (i.shadowColor = "hsla(" + e + ",90%,90%,.6)",
-                        i.shadowBlur = 6,
-                        i.fillText(this.IOOll.player_name.substring(0, 12), 0, 14),
-                        i.shadowBlur = 0),
-                        i.restore(),
                         i.restore(),
                         this.texture2.needsUpdate = !0
+                    }
+                    ,
+                    t.prototype.updateNames = function(t) {
+                        var e, i, s, l, n, a, o, r, h, u, d, O, c, p, I, m, f, g, y;
+                        if (null != t && "function" == typeof t.getUint8 && null != this.data && null != this.IOOll && null != this.IOOll.lI1OO && null != this.IOOll.lI1OO.OIIIO && null != this.IOOll.names) {
+                            for (this.update2(this.data, this.hue),
+                            i = this.canvas2.getContext("2d"),
+                            i.save(),
+                            i.translate(this.canvas2.width / 2, this.canvas2.height / 2),
+                            i.scale(2 / this.canvas.width, 2 / this.canvas.height),
+                            i.fillStyle = "hsla(" + this.hue + ",90%,90%,1)",
+                            o = Math.max(16, Math.min(28, Math.round(this.canvas.width / 22))),
+                            i.font = o + "pt Bungee",
+                            i.textAlign = "center",
+                            i.textBaseline = "top",
+                            m = this.IOOll.lI1OO.OIIIO.status.id,
+                            f = this.IOOll.lI1OO.OIIIO.status.x / this.IOOll.I1l0I,
+                            g = this.IOOll.lI1OO.OIIIO.status.y / this.IOOll.I1l0I,
+                            p = this.IOOll.mode.radar_zoom,
+                            r = t.getUint8(1),
+                            h = 2,
+                            i.shadowColor = "hsla(" + this.hue + ",90%,90%,.5)",
+                            i.shadowBlur = 6,
+                            a = u = 0,
+                            d = r - 1; u <= d; a = u += 1)
+                                I = t.getUint8(h),
+                                n = t.getInt8(h + 1) / 128,
+                                l = t.getInt8(h + 2) / 128,
+                                h += 8,
+                                I !== m && (y = this.IOOll.names.get(I)) && (O = n - f,
+                                c = l - g,
+                                O = (O + 1) % 2,
+                                O < 0 && (O += 2),
+                                O -= 1,
+                                c = (c + 1) % 2,
+                                c < 0 && (c += 2),
+                                c -= 1,
+                                Math.max(Math.abs(O), Math.abs(c)) <= 1 / p && (O *= p,
+                                c *= p,
+                                O = Math.max(-.95, Math.min(.95, O)),
+                                c = Math.max(-.95, Math.min(.95, c)),
+                                i.fillText(y.substring(0, 12), O * (this.canvas.width / 2), -c * (this.canvas.height / 2) - o)));
+                            i.shadowBlur = 0,
+                            i.restore(),
+                            this.texture2.needsUpdate = !0
+                        }
                     }
                     ,
                     t.prototype.updateRepulsor = function(t) {
@@ -6526,7 +6561,8 @@
                     ,
                     e.prototype.IO0OO = function(t, e) {
                         if (null != this.IllI0)
-                            return this.IllI0.lIlIO(t, e)
+                            return this.IllI0.lIlIO(t, e),
+                            null != this.background && this.background.updateNames(t)
                     }
                     ,
                     e.prototype.l100O = function(t, e) {
