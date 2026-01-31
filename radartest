@@ -5869,7 +5869,7 @@
                                 O = Math.max(-.95, Math.min(.95, O)),
                                 c = Math.max(-.95, Math.min(.95, c)),
                                 i.fillText(y.substring(0, 12), O * (this.canvas2.width / 2), -c * (this.canvas2.height / 2) - o),
-                                this.IOOll.lI1OO.OOOl1.survival && (v = this.IOOll.lI1OO.OOOl1.IO111[I],
+                                this.IOOll.lI1OO.OOOl1 && this.IOOll.lI1OO.OOOl1.survival && (v = this.IOOll.lI1OO.OOOl1.IO111[I],
                                 w = "",
                                 E = -1,
                                 null != v && null != v.IOOOI && null != v.IOOOI.type && null != v.IOOOI.instance && null != v.IOOOI.status && (b = v.IOOOI.type.level,
