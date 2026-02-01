@@ -5829,136 +5829,75 @@
                         this.texture2.needsUpdate = !0
                     }
                     ,
-                    t.prototype.updateNames = function (t) {
+                    t.prototype.updateNames = function(t) {
                         var e, i, s, l, n, a, o, r, h, u, d, O, c, p, I, m, f, g, y, v, b, w, x, k, E, _;
-                        if (
-                            null != t &&
-                            "function" == typeof t.getUint8 &&
-                            null != this.data &&
-                            null != this.IOOll &&
-                            null != this.IOOll.lI1OO &&
-                            null != this.IOOll.lI1OO.OIIIO &&
-                            null != this.IOOll.names
-                        ) {
-                            this.update2(this.data, this.hue);
-
-                            i = this.canvas2.getContext("2d");
-                            i.save();
-                            i.translate(this.canvas2.width / 2, this.canvas2.height / 2);
-                            i.scale(2 / this.canvas2.width, 2 / this.canvas2.height);
-
-                            i.fillStyle = "hsla(" + this.hue + ",90%,90%,1)";
-                            o = Math.max(16, Math.min(28, Math.round(this.canvas.width / 22)));
-                            i.font = o + "pt Bungee";
-                            i.textAlign = "center";
-                            i.textBaseline = "top";
-
-                            m = this.IOOll.lI1OO.OIIIO.status.id;
-                            f = this.IOOll.lI1OO.OIIIO.status.x / this.IOOll.I1l0I;
-                            g = this.IOOll.lI1OO.OIIIO.status.y / this.IOOll.I1l0I;
-                            p = this.IOOll.mode.radar_zoom;
-
-                            r = t.getUint8(1);
-                            h = 2;
-
-                            i.shadowColor = "hsla(" + this.hue + ",90%,90%,.5)";
-                            i.shadowBlur = 6;
-
-                            a = u = 0;
-                            d = r - 1;
-
-                            for (; u <= d; a = (u += 1)) {
-                            I = t.getUint8(h);
-                            n = t.getInt8(h + 1) / 128;
-                            l = t.getInt8(h + 2) / 128;
-                            h += 8;
-
-                            if (I !== m && (y = this.IOOll.names.get(I))) {
-                                O = n - f;
-                                c = l - g;
-
-                                O = (O + 1) % 2;
-                                if (O < 0) O += 2;
-                                O -= 1;
-
-                                c = (c + 1) % 2;
-                                if (c < 0) c += 2;
-                                c -= 1;
-
-                                if (Math.max(Math.abs(O), Math.abs(c)) <= 1 / p) {
-                                O *= p;
-                                c *= p;
-
-                                O = Math.max(-0.95, Math.min(0.95, O));
-                                c = Math.max(-0.95, Math.min(0.95, c));
-
-                                i.fillText(
-                                    y.substring(0, 12),
-                                    O * (this.canvas2.width / 2),
-                                    -c * (this.canvas2.height / 2) - o
-                                );
-
-                                if (this.IOOll.lI1OO.OOOl1 && this.IOOll.lI1OO.OOOl1.survival) {
-                                    v = this.IOOll.lI1OO.OOOl1.IO111[I];
-                                    w = "";
-                                    E = -1;
-
-                                    if (
-                                    null != v &&
-                                    null != v.IOOOI &&
-                                    null != v.IOOOI.type &&
-                                    null != v.IOOOI.instance &&
-                                    null != v.IOOOI.status
-                                    ) {
-                                    b = v.IOOOI.type.level;
-                                    if (null != b) w = "T" + b;
-
-                                    x = v.IOOOI.status.shield;
-                                    k = v.IOOOI.instance.shield_capacity;
-                                    if (null != k && k > 0) E = Math.max(0, Math.min(1, x / k));
-                                    }
-
-                                    if (w.length > 0) {
-                                    i.font = Math.round(0.7 * o) + "pt Play";
-                                    i.fillStyle = "hsla(" + this.hue + ",70%,80%,.95)";
-                                    i.fillText(
-                                        w,
-                                        O * (this.canvas2.width / 2),
-                                        -c * (this.canvas2.height / 2) - Math.round(0.2 * o)
-                                    );
-                                    }
-
-                                    if (E >= 0) {
-                                    i.shadowBlur = 0;
-                                    _ = Math.max(18, Math.round(2.4 * o));
-                                    s = Math.max(2, Math.round(0.18 * o));
-
-                                    e = O * (this.canvas2.width / 2) - _ / 2;
-                                    l = -c * (this.canvas2.height / 2) - Math.round(0.9 * o);
-
-                                    i.fillStyle = "rgba(0,0,0,.6)";
-                                    i.fillRect(e - 1, l - 1, _ + 2, s + 2);
-
-                                    i.fillStyle = "hsl(" + Math.round(120 * E) + ",100%,60%)";
-                                    i.fillRect(e, l, Math.round(_ * E), s);
-
-                                    i.shadowBlur = 6;
-                                    }
-
-                                    i.font = o + "pt Bungee";
-                                    i.fillStyle = "hsla(" + this.hue + ",90%,90%,1)";
-                                }
-                                }
-                            }
-                            }
-
-                            i.shadowBlur = 0;
-                            i.restore();
-                            this.texture2.needsUpdate = !0;
+                        if (null != t && "function" == typeof t.getUint8 && null != this.data && null != this.IOOll && null != this.IOOll.lI1OO && null != this.IOOll.lI1OO.OIIIO && null != this.IOOll.names) {
+                            for (this.update2(this.data, this.hue),
+                            i = this.canvas2.getContext("2d"),
+                            i.save(),
+                            i.translate(this.canvas2.width / 2, this.canvas2.height / 2),
+                            i.scale(2 / this.canvas2.width, 2 / this.canvas2.height),
+                            i.fillStyle = "hsla(" + this.hue + ",90%,90%,1)",
+                            o = Math.max(16, Math.min(28, Math.round(this.canvas.width / 22))),
+                            i.font = o + "pt Bungee",
+                            i.textAlign = "center",
+                            i.textBaseline = "top",
+                            m = this.IOOll.lI1OO.OIIIO.status.id,
+                            f = this.IOOll.lI1OO.OIIIO.status.x / this.IOOll.I1l0I,
+                            g = this.IOOll.lI1OO.OIIIO.status.y / this.IOOll.I1l0I,
+                            p = this.IOOll.mode.radar_zoom,
+                            r = t.getUint8(1),
+                            h = 2,
+                            i.shadowColor = "hsla(" + this.hue + ",90%,90%,.5)",
+                            i.shadowBlur = 6,
+                            a = u = 0,
+                            d = r - 1; u <= d; a = u += 1)
+                                I = t.getUint8(h),
+                                n = t.getInt8(h + 1) / 128,
+                                l = t.getInt8(h + 2) / 128,
+                                h += 8,
+                                I !== m && (y = this.IOOll.names.get(I)) && (O = n - f,
+                                c = l - g,
+                                O = (O + 1) % 2,
+                                O < 0 && (O += 2),
+                                O -= 1,
+                                c = (c + 1) % 2,
+                                c < 0 && (c += 2),
+                                c -= 1,
+                                Math.max(Math.abs(O), Math.abs(c)) <= 1 / p && (O *= p,
+                                c *= p,
+                                O = Math.max(-.95, Math.min(.95, O)),
+                                c = Math.max(-.95, Math.min(.95, c)),
+                                i.fillText(y.substring(0, 12), O * (this.canvas2.width / 2), -c * (this.canvas2.height / 2) - o),
+                                this.IOOll.lI1OO.OOOl1 && this.IOOll.lI1OO.OOOl1.survival && (v = this.IOOll.lI1OO.OOOl1.IO111[I],
+                                w = "",
+                                E = -1,
+                                null != v && null != v.IOOOI && null != v.IOOOI.type && null != v.IOOOI.instance && null != v.IOOOI.status && (b = v.IOOOI.type.level,
+                                null != b && (w = "T" + b),
+                                x = v.IOOOI.status.shield,
+                                k = v.IOOOI.instance.shield_capacity,
+                                null != k && k > 0 && (E = Math.max(0, Math.min(1, x / k)))),
+                                w.length > 0 && (i.font = Math.round(.7 * o) + "pt Play",
+                                i.fillStyle = "hsla(" + this.hue + ",70%,80%,.95)",
+                                i.fillText(w, O * (this.canvas2.width / 2), -c * (this.canvas2.height / 2) - Math.round(.2 * o))),
+                                E >= 0 && (i.shadowBlur = 0,
+                                _ = Math.max(18, Math.round(2.4 * o)),
+                                s = Math.max(2, Math.round(.18 * o)),
+                                e = O * (this.canvas2.width / 2) - _ / 2,
+                                l = -c * (this.canvas2.height / 2) - Math.round(.9 * o),
+                                i.fillStyle = "rgba(0,0,0,.6)",
+                                i.fillRect(e - 1, l - 1, _ + 2, s + 2),
+                                i.fillStyle = "hsl(" + Math.round(120 * E) + ",100%,60%)",
+                                i.fillRect(e, l, Math.round(_ * E), s),
+                                i.shadowBlur = 6),
+                                i.font = o + "pt Bungee",
+                                i.fillStyle = "hsla(" + this.hue + ",90%,90%,1)")));
+                            i.shadowBlur = 0,
+                            i.restore(),
+                            this.texture2.needsUpdate = !0
                         }
-                        };
-
-                    
+                    }
+                    ,
                     t.prototype.updateNamesFromRadar = function(t) {
                         var e, i, s, l, n, a, o, r, h, u, d;
                         if (null != t && "function" == typeof t.getUint8 && null != this.data && null != this.IOOll && null != this.IOOll.lI1OO && null != this.IOOll.lI1OO.OIIIO && null != this.IOOll.names) {
