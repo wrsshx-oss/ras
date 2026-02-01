@@ -18089,14 +18089,7 @@
                         a = s * Math.sin(e.r)) : e.OIO00 ? (n = -s * Math.cos(e.r),
                         a = -s * Math.sin(e.r)) : (n = 0,
                         a = 0),
-                        this.IOOll.mode.options.strafe > 0 && (e.strafe_left && (n -= s * Math.sin(e.r) * this.IOOll.mode.options.strafe,
-                        a += s * Math.cos(e.r) * this.IOOll.mode.options.strafe,
-                        (l = Math.sqrt(n * n + a * a)) > s && (n = n / l * s,
-                        a = a / l * s)),
-                        e.strafe_right && (n += s * Math.sin(e.r) * this.IOOll.mode.options.strafe,
-                        a -= s * Math.cos(e.r) * this.IOOll.mode.options.strafe,
-                        (l = Math.sqrt(n * n + a * a)) > s && (n = n / l * s,
-                        a = a / l * s))),
+                        this.IOOll.mode.options.strafe > 0 && (e.strafe_left || e.strafe_right),
                         i = t.O11IO,
                         e.dash && null != t.dash_inertia && (i = t.dash_inertia),
                         null == this.IOOll.mode || null == this.IOOll.mode.options.friction_ratio || e.up || e.dash || (i = Math.pow(i, this.IOOll.mode.options.friction_ratio)),
@@ -25660,7 +25653,8 @@
                         this.max_enter_players = 30,
                         this.options = {
                             friction_ratio: 1,
-                            speed_mod: 1
+                            speed_mod: 1,
+                            strafe: 1
                         },
                         this.rotate_mines = !1,
                         this.radar_zoom = 2,
@@ -25742,6 +25736,7 @@
                         if (this.options = t,
                         null == this.options.friction_ratio && (this.options.friction_ratio = 1),
                         null == this.options.speed_mod && (this.options.speed_mod = 1),
+                        (null == this.options.strafe || this.options.strafe <= 0) && (this.options.strafe = 1),
                         this.options.map_size > 120 && (this.radar_zoom = 4),
                         null != this.options.ships && this.parseShips(this.options),
                         "team" === this.id && this.options.max_players >= 200 && (this.aow = !0),
