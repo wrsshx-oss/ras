@@ -4198,10 +4198,12 @@
                     ,
                     e.prototype.lIl0l = function(t) {
                         var e, i;
+                        var s;
                         return this.mousepressed = !0,
                         e = (t.clientX - this.element.offsetLeft) * this.lOO10,
                         i = (t.clientY - this.element.offsetTop) * this.lOO10,
-                        this.IOIIl(e, i, "mouse") || null != this.control_listener && this.control_listener.mouseDown(e, i, t),
+                        s = this.IOIIl(e, i, "mouse"),
+                        (!s || null != this.control_listener && this.control_listener.IOOll && this.control_listener.IOOll.display && this.control_listener.IOOll.display.screen && this.control_listener.IOOll.display.screen.IO00I && this.control_listener.IOOll.display.screen.IO00I.weapon_store && this.control_listener.IOOll.display.screen.IO00I.weapon_store.shown) && null != this.control_listener && this.control_listener.mouseDown(e, i, t),
                         !1
                     }
                     ,
@@ -4212,16 +4214,18 @@
                         s = (t.clientY - this.element.offsetTop) * this.lOO10,
                         e = !1,
                         e = this.mousepressed ? this.IOO01(i, s, "mouse") : this.mouseMove(i, s, "mouse"),
-                        e || null != this.control_listener && this.control_listener.mouseMove(i, s, t),
+                        (!e || null != this.control_listener && this.control_listener.IOOll && this.control_listener.IOOll.display && this.control_listener.IOOll.display.screen && this.control_listener.IOOll.display.screen.IO00I && this.control_listener.IOOll.display.screen.IO00I.weapon_store && this.control_listener.IOOll.display.screen.IO00I.weapon_store.shown) && null != this.control_listener && this.control_listener.mouseMove(i, s, t),
                         !1
                     }
                     ,
                     e.prototype.lO01O = function(t) {
                         var e, i;
+                        var s;
                         return this.mousepressed = !1,
                         e = (t.clientX - this.element.offsetLeft) * this.lOO10,
                         i = (t.clientY - this.element.offsetTop) * this.lOO10,
-                        this.OI0O1(e, i, "mouse") || null != this.control_listener && this.control_listener.mouseUp(e, i, t),
+                        s = this.OI0O1(e, i, "mouse"),
+                        (!s || null != this.control_listener && this.control_listener.IOOll && this.control_listener.IOOll.display && this.control_listener.IOOll.display.screen && this.control_listener.IOOll.display.screen.IO00I && this.control_listener.IOOll.display.screen.IO00I.weapon_store && this.control_listener.IOOll.display.screen.IO00I.weapon_store.shown) && null != this.control_listener && this.control_listener.mouseUp(e, i, t),
                         !1
                     }
                     ,
@@ -8157,7 +8161,7 @@
                     }
                     ,
                     i.prototype.showWeaponStore = function(t) {
-                        if (this.IOOll.mode.show_weaponsbar && (!this.IOOll.mode.restricted_weapons_store || t))
+                        if (this.IOOll.mode.show_weaponsbar)
                             return null == this.weapon_store && (this.weapon_store = new WeaponStore(this.IOOll),
                             this.IOOll.is_mobile_app ? this.add(this.weapon_store, [.05, .05, .9, .9]) : this.add(this.weapon_store, [.25, .25, .5, .5])),
                             this.weapon_store.O0010(),
@@ -9484,7 +9488,7 @@
                             this.cooling[s] && O.next_shot <= this.IOOll.lI1OO.OOOl1.OI0l1 && (this.cooling[s] = !1,
                             this.repaint(),
                             this.IOOll.lIO0I.beep(2, .25));
-                        for (d = !this.IOOll.mode.restricted_weapons_store,
+                        for (d = !0,
                         d !== this.store_allowed && (this.store_allowed = d,
                         this.repaint()),
                         r = 1e7,
@@ -9603,7 +9607,7 @@
                         this.add(this.countdown, [.7, .9, .1, .1])),
                         this.shown = !1,
                         this.visible = !1,
-                        this.block_ship_control = !0
+                        this.block_ship_control = !1
                     }
                     return extend(e, t),
                     e.prototype.O0010 = function() {
